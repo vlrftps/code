@@ -1,4 +1,13 @@
 (() => {
+  // Change Color
+  var color = {
+    one: "vec3(0.2,0.192,0.282)",
+    two: "vec3(0.396,0.384,0.537)",
+    three: "vec3(0.918,0.553,0.733)",
+    four: "vec3(0.918,0.553,0.733)",
+  };
+  // IMPORTANT => Use this link (https://airtightinteractive.com/util/hex-to-glsl/) to convert HEX Color into vec3() color :)
+
   var t = {
       501: () => {
         var t = document.querySelector(".js-infobar");
@@ -4093,7 +4102,7 @@
           var i = e.createShader(e.FRAGMENT_SHADER);
           e.shaderSource(
             i,
-            "\nprecision mediump float;\nuniform vec2 u_resolution;\nuniform vec2 u_mouse;\nuniform float u_time;\nuniform float u_offset;\nuniform float u_size;\nuniform float u_speed;\nuniform float u_scroll;\n\nvoid main() {\n\tfloat s1 = 0.45;\n\tfloat s2 = 0.70;\n\tfloat s3 = 0.99;\n\n\tvec2 p = gl_FragCoord.xy / u_resolution.xy;\n\tvec2 m = u_mouse.xy / u_resolution.xy;\n\tfloat dist = distance(p, m);\n\n\tp.y += -u_scroll / 5000.;\n\tp.y += sin(p.x * 3.14) * (u_speed / 400.);\n\n\tdist = smoothstep(0., u_size * .6, dist);\n\tp.x += (1. - dist) * (.5 - p.x);\n\n\tfor(int i = 1; i < 6; i++) {\n\t\tp.x += 0.05 / float(i) * sin(float(i) * 9. * p.y + u_time * 0.2);\n\t\tp.y += 0.15 / float(i) * cos(float(i) * 5. * p.x + u_time * 0.2);\n\n\t\tp.x -= (0.1 / float(i) * cos(float(i) * p.x)) * (u_speed / 80.);\n\t\tp.y -= (0.1 / float(i) * cos(float(i) * p.x)) * (u_speed / 80.);\n\t}\n\n\tp.x -= u_offset;\n\n\tvec3 c1 = vec3(0., 0.035, 0.133);   // #c4c4c4\n\tvec3 c2 = vec3(0.02, 0.102, 0.471); // #c4c4c4\n\tvec3 c3 = vec3(0.114, 0.231, 1.);   // #c4c4c4\n\tvec3 c4 = vec3(0.514, 0.816, 1.);   // #c4c4c4\n\n\tvec3 color = vec3(0.);\n\tcolor = mix(c1, c2, vec3(min(p.x / s1, 1.)));\n\tcolor = mix(color, c3, vec3(max(min((p.x - s1) / (s2 - s1), 1.), 0.)));\n\tcolor = mix(color, c4, vec3(max(min((p.x - s2) / (s3 - s2), 1.), 0.)));\n\n\tgl_FragColor = vec4(color, 1.);\n}\n"
+            `\nprecision mediump float;\nuniform vec2 u_resolution;\nuniform vec2 u_mouse;\nuniform float u_time;\nuniform float u_offset;\nuniform float u_size;\nuniform float u_speed;\nuniform float u_scroll;\n\nvoid main() {\n\tfloat s1 = 0.45;\n\tfloat s2 = 0.70;\n\tfloat s3 = 0.99;\n\n\tvec2 p = gl_FragCoord.xy / u_resolution.xy;\n\tvec2 m = u_mouse.xy / u_resolution.xy;\n\tfloat dist = distance(p, m);\n\n\tp.y += -u_scroll / 5000.;\n\tp.y += sin(p.x * 3.14) * (u_speed / 400.);\n\n\tdist = smoothstep(0., u_size * .6, dist);\n\tp.x += (1. - dist) * (.5 - p.x);\n\n\tfor(int i = 1; i < 6; i++) {\n\t\tp.x += 0.05 / float(i) * sin(float(i) * 9. * p.y + u_time * 0.2);\n\t\tp.y += 0.15 / float(i) * cos(float(i) * 5. * p.x + u_time * 0.2);\n\n\t\tp.x -= (0.1 / float(i) * cos(float(i) * p.x)) * (u_speed / 80.);\n\t\tp.y -= (0.1 / float(i) * cos(float(i) * p.x)) * (u_speed / 80.);\n\t}\n\n\tp.x -= u_offset;\n\n\tvec3 c1 = ${color.one};   // #c4c4c4\n\tvec3 c2 = ${color.two}; // #c4c4c4\n\tvec3 c3 = ${color.three};   // #c4c4c4\n\tvec3 c4 = ${color.four};   // #c4c4c4\n\n\tvec3 color = vec3(0.);\n\tcolor = mix(c1, c2, vec3(min(p.x / s1, 1.)));\n\tcolor = mix(color, c3, vec3(max(min((p.x - s1) / (s2 - s1), 1.), 0.)));\n\tcolor = mix(color, c4, vec3(max(min((p.x - s2) / (s3 - s2), 1.), 0.)));\n\n\tgl_FragColor = vec4(color, 1.);\n}\n`
           ),
             e.compileShader(i);
           var o = e.createProgram();
