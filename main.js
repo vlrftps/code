@@ -4,7 +4,7 @@
     one: "vec3(0.133,0.133,0.153)",
     two: "vec3(0.188,0.184,0.255)",
     three: "vec3(0.396,0.384,0.537)",
-    four: "vec3(0.2,0.192,0.282)",
+    four: "vec3(0.188,0.184,0.255)",",
   };
   // IMPORTANT => Use this link (https://airtightinteractive.com/util/hex-to-glsl/) to convert HEX Color into vec3() color :)
 
