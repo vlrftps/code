@@ -21,7 +21,7 @@
         }
       },
       547: () => {
-        document.querySelector(".c-canvas")
+        document.querySelector(".c-canvas") 
           ? setTimeout(function () {
               document.body.classList.remove("is-hide-cookie-banner");
             }, 2500)
