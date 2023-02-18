@@ -1,10 +1,10 @@
 (() => {
   // Change Color
   var color = {
-    one: "vec3(0.059,0.059,0.094)", 
-    two: "vec3(0.196,0.192,0.278)",
-    three: "vec3(0.306,0.298,0.416)",
-    four: "vec3(0.396,0.384,0.537)",
+  one: "vec3(0.086,0.082,0.145)", 
+    two: "vec3(0.216,0.208,0.329)",
+    three: "vec3(0.29,0.278,0.435)",
+    four: "vec3(0.384,0.369,0.553)",
   };
   // IMPORTANT => Use this link (https://airtightinteractive.com/util/hex-to-glsl/) to convert HEX Color into vec3() color :)
 
